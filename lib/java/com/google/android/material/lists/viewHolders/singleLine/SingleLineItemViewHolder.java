@@ -15,6 +15,7 @@ package com.google.android.material.lists.viewHolders.singleLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -39,4 +40,11 @@ public class SingleLineItemViewHolder extends MaterialViewHolder {
         this.secondaryAction = itemView.findViewById(R.id.mtrl_list_item_secondary_action);
     }
 
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        primaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_single_line_primary_text));
+        secondaryAction.removeAllViews();
+        secondaryAction.setBackgroundColor(res.getColor(R.color.placeholder_content));
+    }
 }

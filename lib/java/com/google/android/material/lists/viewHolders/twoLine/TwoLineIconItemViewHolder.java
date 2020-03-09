@@ -15,6 +15,7 @@ package com.google.android.material.lists.viewHolders.twoLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -24,9 +25,6 @@ import androidx.annotation.NonNull;
 import com.google.android.material.R;
 import com.google.android.material.lists.viewHolders.MaterialViewHolder;
 
-/**
- * A two-lined ViewHolder with a small icon image, title text, and one line of subtext
- */
 public class TwoLineIconItemViewHolder extends MaterialViewHolder {
 
     public FrameLayout primaryAction;
@@ -40,6 +38,15 @@ public class TwoLineIconItemViewHolder extends MaterialViewHolder {
         this.primaryText = itemView.findViewById(R.id.mtrl_list_item_primary_text);
         this.secondaryText = itemView.findViewById(R.id.mtrl_list_item_secondary_text);
 
+    }
+
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        primaryAction.removeAllViews();
+        primaryAction.setBackgroundColor(res.getColor(R.color.placeholder_content));
+        primaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_primary_text));
+        secondaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_secondary_text));
     }
 
 }

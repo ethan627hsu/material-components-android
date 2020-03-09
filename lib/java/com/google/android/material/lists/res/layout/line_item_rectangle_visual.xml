@@ -18,4 +18,4 @@
   android:layout_width="@dimen/mtrl_list_item_rectangle_width"
   android:layout_height="@dimen/mtrl_list_item_rectangle_height"
   android:layout_marginEnd="@dimen/mtrl_list_item_item_padding"
-  tools:background="@color/placeholder_content" />
+  tools:src="@drawable/rectangle_sample_visual" />

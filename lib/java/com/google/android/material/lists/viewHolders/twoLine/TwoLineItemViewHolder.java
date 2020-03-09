@@ -15,6 +15,7 @@ package com.google.android.material.lists.viewHolders.twoLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -23,9 +24,6 @@ import androidx.annotation.NonNull;
 import com.google.android.material.R;
 import com.google.android.material.lists.viewHolders.MaterialViewHolder;
 
-/**
- * A two-lined ViewHolder with title text, one line of subtext and small meta text
- */
 public class TwoLineItemViewHolder extends MaterialViewHolder {
 
     public TextView primaryText;
@@ -41,4 +39,11 @@ public class TwoLineItemViewHolder extends MaterialViewHolder {
 
     }
 
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        primaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_primary_text));
+        secondaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_secondary_text));
+        meta.setText(res.getString(R.string.mtrl_list_item_sample_mode_meta));
+    }
 }

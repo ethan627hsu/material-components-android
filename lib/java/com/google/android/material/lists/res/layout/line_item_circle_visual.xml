@@ -24,5 +24,5 @@ however it correctly cuts off the corners when rendered in a real app.
     android:layout_height="@dimen/mtrl_list_item_medium_visual_size"
     android:layout_marginEnd="16dp"
     app:shapeAppearance="@style/ShapeAppearanceOverlay.Circular"
-    tools:background="@color/placeholder_content" />
+    tools:src="@drawable/square_sample_visual" />
 <!-- Layout preview does not work for this view, but it still renders properly. -->

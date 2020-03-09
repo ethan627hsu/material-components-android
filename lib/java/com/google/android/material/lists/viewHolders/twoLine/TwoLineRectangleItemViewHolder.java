@@ -15,22 +15,20 @@ package com.google.android.material.lists.viewHolders.twoLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.R;
-import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.lists.viewHolders.MaterialViewHolder;
 
-/**
- * A two-lined ViewHolder with a rectangular image, title text, one line of subtext and an action
- */
 public class TwoLineRectangleItemViewHolder extends MaterialViewHolder {
 
-    public ShapeableImageView visual;
+    public ImageView visual;
     public TextView primaryText;
     public TextView secondaryText;
     public FrameLayout secondaryAction;
@@ -42,6 +40,16 @@ public class TwoLineRectangleItemViewHolder extends MaterialViewHolder {
         this.primaryText = itemView.findViewById(R.id.mtrl_list_item_primary_text);
         this.secondaryText = itemView.findViewById(R.id.mtrl_list_item_secondary_text);
         this.secondaryAction = itemView.findViewById(R.id.mtrl_list_item_secondary_action);
+    }
+
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        visual.setImageDrawable(res.getDrawable(R.drawable.rectangle_sample_visual));
+        primaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_primary_text));
+        secondaryText.setText(res.getString(R.string.mtrl_list_item_sample_mode_two_line_secondary_text));
+        secondaryAction.removeAllViews();
+        secondaryAction.setBackgroundColor(res.getColor(R.color.placeholder_content));
     }
 
 }

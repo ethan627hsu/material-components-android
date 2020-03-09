@@ -22,4 +22,4 @@
     android:layout_marginStart="@dimen/mtrl_list_item_meta_border"
     android:gravity="bottom"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-    tools:text="meta" />
+    tools:text="@string/mtrl_list_item_sample_mode_meta" />
