@@ -23,4 +23,4 @@
     android:layout_marginStart="@dimen/material_list_item_meta_border"
     android:gravity="bottom"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-    tools:text="meta" />
+    tools:text="@string/material_list_item_sample_mode_meta" />

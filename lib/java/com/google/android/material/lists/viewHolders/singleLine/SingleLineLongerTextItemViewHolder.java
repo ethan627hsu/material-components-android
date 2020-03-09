@@ -15,6 +15,7 @@ package com.google.android.material.lists.viewHolders.singleLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -35,5 +36,9 @@ public class SingleLineLongerTextItemViewHolder extends MaterialViewHolder {
         super(R.layout.single_line_longer_text_item, parent);
         this.primaryText = itemView.findViewById(R.id.material_list_item_primary_text);
     }
-
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        primaryText.setText(res.getString(R.string.material_list_item_sample_mode_single_line_primary_text));
+    }
 }

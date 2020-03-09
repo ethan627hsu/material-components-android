@@ -15,6 +15,7 @@ package com.google.android.material.lists.viewHolders.threeLine;
  * limitations under the License.
  */
 
+import android.content.res.Resources;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -40,6 +41,15 @@ public class ThreeLineIconItemViewHolder extends MaterialViewHolder {
         this.primaryText = itemView.findViewById(R.id.material_list_item_primary_text);
         this.secondaryText = itemView.findViewById(R.id.material_list_item_secondary_text);
 
+    }
+
+    @Override
+    public void enableSampleMode() {
+        Resources res = itemView.getResources();
+        primaryAction.removeAllViews();
+        primaryAction.setBackgroundColor(res.getColor(R.color.placeholder_content));
+        primaryText.setText(res.getString(R.string.material_list_item_sample_mode_three_line_primary_text));
+        secondaryText.setText(res.getString(R.string.material_list_item_sample_mode_three_line_secondary_text));
     }
 
 }

@@ -22,4 +22,4 @@
     android:gravity="bottom"
     android:maxLines="1"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-    tools:text="OVERLINE" />
+    tools:text="@string/material_list_item_sample_mode_overline" />

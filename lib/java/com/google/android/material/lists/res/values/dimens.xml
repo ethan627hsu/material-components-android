@@ -12,6 +12,7 @@
     <dimen name="material_list_item_rectangle_height">56dp</dimen>
     <dimen name="material_list_item_square_size">40dp</dimen>
     <dimen name="material_list_item_meta_height">32dp</dimen>
+
     <!-- The meta text uses large padding instead of the recommended 28dp to have the meta text better line
    up with the primary texts in the "two_line_item" and "three_line_item" xml layouts. -->
 

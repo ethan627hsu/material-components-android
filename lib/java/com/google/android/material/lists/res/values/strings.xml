@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Filler text for sample mode -->
+  <string name="material_list_item_sample_mode_single_line_primary_text">Single-line item</string>
+  <string name="material_list_item_sample_mode_single_line_longer_text_primary_text">Single-line item longer text</string>
+  <string name="material_list_item_sample_mode_two_line_primary_text">Two-line item</string>
+  <string name="material_list_item_sample_mode_two_line_secondary_text">Secondary text</string>
+  <string name="material_list_item_sample_mode_meta">meta</string>
+  <!-- When used, should appear as "OVERLINE" -->
+  <string name="material_list_item_sample_mode_overline">Overline</string>
+  <string name="material_list_item_sample_mode_three_line_primary_text">Three-line item</string>
+  <!-- Depending on the list item, some of the text may be cut off -->
+  <string name="material_list_item_sample_mode_three_line_secondary_text">
+        Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+</resources>
+
