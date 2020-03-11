@@ -31,4 +31,13 @@
     <dimen name="mtrl_list_item_large_square_size">56dp</dimen>
     <dimen name="mtrl_list_item_three_line_overline_height">28dp</dimen>
     <dimen name="mtrl_list_item_three_line_rectangle_end_margin">20dp</dimen>
+
+    <!-- Inset divider dimensions -->
+  <dimen name="material_list_item_inset_padding_general">72dp</dimen>
+  <dimen name="material_list_item_inset_padding_icon">@dimen/material_list_item_inset_padding_general</dimen>
+  <dimen name="material_list_item_inset_padding_circle">@dimen/material_list_item_inset_padding_general</dimen>
+  <dimen name="material_list_item_inset_padding_square">@dimen/material_list_item_inset_padding_general</dimen>
+  <dimen name="material_list_item_inset_padding_single_line_square">88dp</dimen>
+  <dimen name="material_list_item_inset_padding_single_line_rectangle">116dp</dimen>
+
 </resources>
