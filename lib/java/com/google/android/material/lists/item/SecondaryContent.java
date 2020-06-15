@@ -30,7 +30,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.material.R;
 
-public class SecondaryContent extends FrameLayout implements TotalLinesListener {
+class SecondaryContent extends FrameLayout implements TotalLinesListener {
 
   private TextView metadata;
   private FrameLayout action;

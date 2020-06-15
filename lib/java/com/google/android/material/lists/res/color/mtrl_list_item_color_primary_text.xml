@@ -14,6 +14,6 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:alpha="0.87" android:color="?attr/colorOnSurface" />
+  <item android:color="@color/material_on_surface_emphasis_high_type" />
 
 </selector>

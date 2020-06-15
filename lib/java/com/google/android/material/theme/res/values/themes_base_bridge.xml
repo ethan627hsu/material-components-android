@@ -64,6 +64,7 @@
     <item name="materialButtonOutlinedStyle">@style/Widget.MaterialComponents.Button.OutlinedButton</item>
     <item name="materialButtonToggleGroupStyle">@style/Widget.MaterialComponents.MaterialButtonToggleGroup</item>
     <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
+    <item name="materialViewHolderStyle">@style/Widget.MaterialComponents.MaterialViewHolder</item>
     <item name="navigationViewStyle">@style/Widget.MaterialComponents.NavigationView</item>
     <item name="sliderStyle">@style/Widget.MaterialComponents.Slider</item>
     <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar</item>
@@ -137,6 +138,7 @@
     <item name="materialButtonOutlinedStyle">@style/Widget.MaterialComponents.Button.OutlinedButton</item>
     <item name="materialButtonToggleGroupStyle">@style/Widget.MaterialComponents.MaterialButtonToggleGroup</item>
     <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
+    <item name="materialViewHolderStyle">@style/Widget.MaterialComponents.MaterialViewHolder</item>
     <item name="navigationViewStyle">@style/Widget.MaterialComponents.NavigationView</item>
     <item name="sliderStyle">@style/Widget.MaterialComponents.Slider</item>
     <item name="snackbarStyle">@style/Widget.MaterialComponents.Snackbar</item>

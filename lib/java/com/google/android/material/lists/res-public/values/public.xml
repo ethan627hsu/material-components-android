@@ -18,4 +18,16 @@
   <public name="material_list_item_single_line" type="layout"/>
   <public name="material_list_item_two_line" type="layout"/>
   <public name="material_list_item_three_line" type="layout"/>
+
+  <public name="materialViewHolderStyle" type="attr"/>
+  <public name="Widget.MaterialComponents.MaterialViewHolder" type="style"/>
+
+  <public name="visualShapeAppearance" format="reference" />
+  <public name="visualShapeAppearanceOverlay" format="reference" />
+  <public name="visualSize" format="reference" />
+  <!-- Elevation for the BottomAppBar. -->
+  <public name="overlineTextAppearance" format="reference" />
+  <public name="primaryTextAppearance" format="reference" />
+  <public name="secondaryTextAppearance" format="reference" />
+  <public name="metadataTextAppearance" format="reference" />
 </resources>

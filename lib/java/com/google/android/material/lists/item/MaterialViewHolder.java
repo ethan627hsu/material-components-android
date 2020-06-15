@@ -15,7 +15,8 @@
  */
 package com.google.android.material.lists.item;
 
-import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,19 +24,26 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.R;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.shape.ShapeAppearanceModel;
 
-public class MaterialListItem extends RecyclerView.ViewHolder {
+public class MaterialViewHolder extends RecyclerView.ViewHolder {
 
   private Visual visual;
   private TextCollection textCollection;
   private SecondaryContent secondaryContent;
 
   @NonNull
-  public Visual getVisual() {
+  public ShapeableImageView getVisual() {
     return visual;
+  }
+
+  public void setVisualSize(@Visual.VisualSize int visualSize) {
+    visual.setSize(visualSize);
   }
 
   @NonNull
@@ -59,16 +67,11 @@ public class MaterialListItem extends RecyclerView.ViewHolder {
   }
 
   @NonNull
-  public SecondaryContent getSecondaryContent() {
-    return secondaryContent;
-  }
-
-  @NonNull
   public FrameLayout getAction() {
     return secondaryContent.getAction();
   }
 
-  public MaterialListItem(@NonNull ViewGroup parent) {
+  public MaterialViewHolder(@NonNull ViewGroup parent) {
 
     super(inflateListItemLayout(parent));
 
@@ -83,12 +86,33 @@ public class MaterialListItem extends RecyclerView.ViewHolder {
       }
     });
 
+
+    final int[] attrs = new int[]{
+        R.attr.visualShapeAppearance,
+        R.attr.visualShapeAppearanceOverlay,
+        R.attr.visualSize,
+        R.attr.overlineTextAppearance,
+        R.attr.primaryTextAppearance,
+        R.attr.secondaryTextAppearance,
+        R.attr.metadataTextAppearance};
+
+    TypedValue typedValue = new TypedValue();
+    parent.getContext().getTheme().resolveAttribute(R.attr.materialViewHolderStyle, typedValue, true);
+    TypedArray style = parent.getContext().getTheme().obtainStyledAttributes(typedValue.resourceId, attrs);
+
+    visual.setShapeAppearanceModel(ShapeAppearanceModel.builder(parent.getContext(), style.getResourceId(0, 0), style.getResourceId(1, 0)).build());
+    visual.setSize(style.getInt(2, 0));
+    TextViewCompat.setTextAppearance(getOverlineText(), style.getResourceId(3, 0));
+    TextViewCompat.setTextAppearance(getPrimaryText(), style.getResourceId(4, 0));
+    TextViewCompat.setTextAppearance(getSecondaryText(), style.getResourceId(5, 0));
+    TextViewCompat.setTextAppearance(getMetadata(), style.getResourceId(6, 0));
+    style.recycle();
+
     updateTotalLines(0);
   }
 
   private static View inflateListItemLayout(@NonNull ViewGroup parent) {
-    Context context = parent.getContext();
-    LayoutInflater layoutInflater = LayoutInflater.from(context);
+    LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
     View itemView = layoutInflater.inflate(R.layout.material_list_item, parent, false);
     return itemView;
   }

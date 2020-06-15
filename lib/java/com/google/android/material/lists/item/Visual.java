@@ -22,18 +22,16 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.Dimension;
-import androidx.annotation.NonNull;
+import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.internal.ViewUtils;
-import com.google.android.material.shape.CornerFamily;
-import com.google.android.material.shape.ShapeAppearanceModel;
 
-public class Visual extends ShapeableImageView implements TotalLinesListener {
+class Visual extends ShapeableImageView implements TotalLinesListener {
 
-  protected Visual(Context context) {
+  public Visual(Context context) {
     super(context);
   }
 
@@ -45,36 +43,39 @@ public class Visual extends ShapeableImageView implements TotalLinesListener {
     super(context, attrs, defStyle);
   }
 
-  public static final int NONE = 0;
-  public static final int ICON = 1;
-  public static final int CIRCLE = 2;
-  public static final int SQUARE = 3;
-  public static final int RECTANGLE = 4;
-
-  private int type = NONE;
-
-  @NonNull
-  public int getType() {
-    return type;
+  @IntDef({ICON, NORMAL, LARGE})
+  public @interface VisualSize {
   }
 
-  public void setType(int type) {
+  public static final int ICON = 0;
+  public static final int NORMAL = 1;
+  public static final int LARGE = 2;
 
-    this.type = type;
-    onTotalLinesChange(DEFAULT);
+  @VisualSize
+  int size = 0;
+
+  public @VisualSize
+  int getSize() {
+    return size;
   }
 
-  private int DEFAULT = -2;
-  private int defaultTotalLines = 0;
+  public void setSize(int size) {
+
+    this.size = size;
+    updateVisual();
+  }
+
+  private int totalLines = 0;
 
   @Override
   public void onTotalLinesChange(int totalLines) {
 
-    if (totalLines == DEFAULT) {
-      totalLines = defaultTotalLines;
-    } else {
-      defaultTotalLines = totalLines;
-    }
+    this.totalLines = totalLines;
+    updateVisual();
+
+  }
+
+  private void updateVisual() {
 
     int gravity = calculateGravity(totalLines);
     int[] bounds = calculateBounds(totalLines);
@@ -85,13 +86,11 @@ public class Visual extends ShapeableImageView implements TotalLinesListener {
     layoutParams.width = bounds[0];
     layoutParams.height = bounds[1];
     layoutParams.setMargins(layoutMargins[0], layoutMargins[1], layoutMargins[2], layoutMargins[3]);
-
-    setShapeAppearanceModel(calculateShapeAppearanceModel());
   }
 
   private int calculateGravity(int totalLines) {
     int gravity = Gravity.CENTER_VERTICAL;
-    if (type == ICON || totalLines >= 3) {
+    if (size == ICON || totalLines >= 3) {
       gravity = Gravity.TOP;
     }
     return gravity;
@@ -100,26 +99,19 @@ public class Visual extends ShapeableImageView implements TotalLinesListener {
   private int[] calculateBounds(int totalLines) {
     int[] bounds = new int[2];
 
-    if (type == RECTANGLE) {
+    if (size == LARGE) {
       int rectangleWidth = getDimensionInt(R.dimen.mtrl_list_item_visual_rectangle_width);
       int rectangleHeight = getDimensionInt(R.dimen.mtrl_list_item_visual_rectangle_height);
       bounds[0] = rectangleWidth;
       bounds[1] = rectangleHeight;
     } else {
       int size = 0;
-      switch (type) {
+      switch (this.size) {
         case ICON:
           size = getDimensionInt(R.dimen.mtrl_list_item_visual_icon_size);
           break;
-        case CIRCLE:
-          size = getDimensionInt(R.dimen.mtrl_list_item_visual_circle_size);
-          break;
-        case SQUARE:
-          if (totalLines == 1) {
-            size = getDimensionInt(R.dimen.mtrl_list_item_visual_square_large_size);
-          } else {
-            size = getDimensionInt(R.dimen.mtrl_list_item_visual_square_size);
-          }
+        case NORMAL:
+          size = getDimensionInt(R.dimen.mtrl_list_item_visual_normal_size);
       }
       bounds[0] = size;
       bounds[1] = size;
@@ -138,18 +130,17 @@ public class Visual extends ShapeableImageView implements TotalLinesListener {
         normalLayoutMargin,
         normalLayoutMargin};
 
-    switch (type) {
+    switch (size) {
       case ICON:
         layoutMargins[2] = largeLayoutMargin;
         break;
-      case CIRCLE:
-      case SQUARE:
+      case NORMAL:
         if (totalLines == 1) {
           layoutMargins[1] = smallLayoutMargin;
           layoutMargins[3] = smallLayoutMargin;
         }
         break;
-      case RECTANGLE:
+      case LARGE:
         layoutMargins[0] = 0;
         if (totalLines >= 3) {
           layoutMargins[2] = 20;
@@ -166,17 +157,6 @@ public class Visual extends ShapeableImageView implements TotalLinesListener {
       layoutMargins[2] = temp;
     }
     return layoutMargins;
-  }
-
-  private ShapeAppearanceModel calculateShapeAppearanceModel() {
-    float cornerSize = 0;
-    if (type == CIRCLE) {
-      cornerSize = ViewUtils.dpToPx(getContext(), 20);
-    }
-    return ShapeAppearanceModel
-        .builder()
-        .setAllCorners(CornerFamily.ROUNDED, cornerSize)
-        .build();
   }
 
   @Dimension

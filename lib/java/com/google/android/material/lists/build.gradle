@@ -8,6 +8,7 @@ dependencies {
   implementation compatibility("recyclerview")
 
   implementation project(fromPath("lib/java/com/google/android/material/color"))
+  implementation project(fromPath("lib/java/com/google/android/material/resources"))
   implementation project(fromPath("lib/java/com/google/android/material/typography"))
 }
 
